@@ -32,7 +32,7 @@ dimensions, necessary for execution in C.
     1. the type of layer is analysed,
     2. applied to the output of the previous layer,
     3. details of the layer are concatenated to the different strings: declaration and definition of parameters (model.c),
-    4. the layers that contain stored parameters are printed following the correct representation in the corresponding files (e.g. fc1.h),
+    4. the layers that contain stored parameters are printed following the correct representation in the corresponding files (e.g. fc1.h).
 3. Once all the layers have been analyzed, the model.c file is written using the stored strings (2.c), the input used is saved in input.h, and all the files that require to be imported (e.g. fc1.h) are written in the model.h file.
 
 Note: This method however has problems with models whose forward function does
