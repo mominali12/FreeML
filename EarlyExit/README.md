@@ -1,8 +1,3 @@
----
-title: 'Project documentation template'
-disqus: hackmd
----
-
 gNet: Global Early Exit for Pre-Trained Networks
 ===
 
