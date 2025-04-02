@@ -220,7 +220,7 @@ def factorize_largest_layers(model, input_tensor, test_loader=None, device="cpu"
             for i, data in enumerate(test_loader):
                 images, labels = data
                 images, labels = images.to(device), labels.to(device)
-                outputs = model(images)
+                outputs, _ = model(images)
                 _, predicted = torch.max(outputs.data, 1)
                 total += labels.size(0)
                 correct += (predicted == labels).sum().item()
@@ -407,7 +407,7 @@ def perform_compression(model, list_of_fc_layers, list_of_fc_sparsity, learning_
                 if calculate_outputs:
                     outputs = calculate_outputs(inputs)
                 else:
-                    outputs = model.forward(inputs)
+                    outputs, _ = model.forward(inputs)
                 
                 # Regularization
                 regularizer = 0
@@ -467,7 +467,7 @@ def perform_compression(model, list_of_fc_layers, list_of_fc_sparsity, learning_
                         if calculate_outputs:
                             outputs = calculate_outputs(inputs)
                         else:
-                            outputs = model.forward(inputs)
+                            outputs, _ = model.forward(inputs)
                         
                         # for calculating v_loss
                         loss = criterion(outputs, labels)                       
@@ -521,7 +521,7 @@ def perform_compression(model, list_of_fc_layers, list_of_fc_sparsity, learning_
                 if calculate_outputs:
                     outputs = calculate_outputs(inputs)
                 else:
-                    outputs = model.forward(inputs)
+                    outputs, _ = model.forward(inputs)
                 # max returns (value, index)
                 
                 _, predicted = torch.max(outputs.data, 1)
@@ -623,7 +623,7 @@ def compress_NN_models(model, target_size, train_loader, test_loader,
             images, labels = images.to(device), labels.to(device)
             if (calculateInputs):
                 images = calculateInputs(images)
-            outputs = model(images)
+            outputs, _ = model(images)
             _, predicted = torch.max(outputs.data, 1)
             total += labels.size(0)
             correct += (predicted == labels).sum().item()
